@@ -1,0 +1,50 @@
+@media screen and (max-width: 480px) {
+  .logo {
+    max-width: 126px;
+    max-height: 24px;
+    margin: 0;
+    padding: 28px 167px 32px 27px;
+  }
+
+  .profile {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile__image {
+    margin: 0;
+  }
+
+  .profile__title {
+    max-width: 196px;
+    max-height: 22px;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .profile__edit-button {
+    max-width: 18px;
+    max-height: 18px;
+    margin: 0;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile__add-button {
+    margin: 0;
+    max-width: 282px;
+    max-height: 50px;
+    padding: 0 19px 36px;
+  }
+}
