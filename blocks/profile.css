@@ -40,6 +40,11 @@
   grid-area: button;
   margin: 15px 0 9px 18px;
   padding: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__edit-button:hover {
+  opacity: 60%;
 }
 
 .profile__description {
@@ -57,4 +62,9 @@
   height: 50px;
   border: 2px solid #fff;
   margin-left: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__add-button:hover {
+  opacity: 60%;
 }
