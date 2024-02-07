@@ -44,7 +44,6 @@
   .card__image {
     width: 230px;
     height: 230px;
-    border-radius: 10px 10px 0 0;
   }
 
   .card__title {
@@ -85,7 +84,7 @@
 
   .profile__title {
     max-width: 196px;
-    max-height: 22px;
+    max-height: 30px;
     font-size: 22px;
     line-height: 1.2;
   }
