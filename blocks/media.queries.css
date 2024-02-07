@@ -1,3 +1,62 @@
+@media screen and (max-width: 895px) {
+  .header {
+    max-width: 800px;
+    max-height: 56px;
+    padding: 0 0 32px 27px;
+    margin: 28px 0 0;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    max-width: 126px;
+    max-height: 24px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .profile {
+    max-width: 800px;
+  }
+
+  .profile__image {
+    margin: 0 10px 0 auto;
+  }
+
+  .profile__title {
+    font-size: 38px;
+  }
+
+  .profile__info {
+    grid-template-columns: minmax(auto, 339px) auto;
+  }
+
+  .profile__add-button {
+    margin: 0 auto;
+  }
+
+  .card__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 230px);
+    max-width: 500px;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .card__image {
+    width: 230px;
+    height: 230px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .card__title {
+    max-width: 165px;
+  }
+
+  .footer__info {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .header {
     max-width: 320px;
@@ -43,6 +102,7 @@
     justify-content: center;
     width: 100%;
     padding: 30px 0 0;
+    gap: 0;
   }
 
   .profile__description {
@@ -75,11 +135,12 @@
     width: 282px;
     height: 14px;
     color: #545454;
-    font-family: "Inter";
+    font-family: "Inter", Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
     margin: 0;
     padding: 48px 19px 36px;
+    display: block;
   }
 }

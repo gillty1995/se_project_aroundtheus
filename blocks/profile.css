@@ -20,7 +20,11 @@
   font-weight: 500;
   grid-area: title;
   margin: 0;
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 375px;
 }
 
 .profile__info {
@@ -28,7 +32,8 @@
   grid-template-areas:
     "title button"
     "description description";
-  grid-template-columns: minmax(auto, 373px) auto;
+  grid-template-columns: minmax(auto, 375px) auto;
+  gap: 7px 18px;
 }
 
 .profile__edit-button {
@@ -38,7 +43,7 @@
   height: 24px;
   border: 1px solid #fff;
   grid-area: button;
-  margin: 15px 0 9px 18px;
+  margin: 15px 0 9px;
   padding: 0;
   transition: opacity 0.3s ease-in-out;
 }
@@ -48,11 +53,15 @@
 }
 
 .profile__description {
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 21.78px;
-  margin: 7px 0 0;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 375px;
 }
 
 .profile__add-button {
