@@ -4,6 +4,7 @@
 
 - Intro
 - Figma
+- Github Pages
 - Images
 - Video
 - Final thoughts
@@ -15,6 +16,9 @@ This project is made so all the elements are displayed correctly on popular scre
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+
+**Github Pages**
+Here's the link: https://gillty1995.github.io/se_project_aroundtheus/
 
 **Images**
 
