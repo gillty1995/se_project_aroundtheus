@@ -1,12 +1,35 @@
 .header {
   margin-top: 45px;
   max-width: 880px;
-  max-height: 74px;
+  min-height: 74px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
-.logo {
+.header__logo {
   max-width: 173px;
   max-height: 33px;
-  padding-bottom: 53px;
+  padding-bottom: 37px;
+}
+
+@media screen and (max-width: 895px) {
+  .header {
+    max-width: 800px;
+    min-height: 56px;
+    padding: 0 0 26px 27px;
+    margin: 28px 0 0;
+    box-sizing: border-box;
+  }
+
+  .header__logo {
+    max-width: 126px;
+    max-height: 24px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    max-width: 320px;
+  }
 }

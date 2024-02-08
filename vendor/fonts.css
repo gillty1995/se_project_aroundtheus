@@ -21,10 +21,3 @@
   font-display: swap;
   src: url(../vendor/fonts/Inter-Black.woff2) format("woff2");
 }
-
-@font-face {
-  font-family: Arial;
-  font-style: normal;
-  font-weight: 400;
-  src: format(woff2);
-}
