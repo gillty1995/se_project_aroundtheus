@@ -37,12 +37,8 @@
 
   .footer__info {
     max-width: 282px;
-    color: #545454;
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
-    margin: 0;
     padding: 48px 19px 36px;
   }
 }
