@@ -1,0 +1,124 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 19px;
+  display: none;
+}
+
+.modal__container {
+  margin: auto;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+  max-width: 430px;
+  max-height: 330px;
+}
+
+.modal__header {
+  color: #000;
+  font-family: "Inter", Arial, Helvetica;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 330px;
+  max-height: 23px;
+  padding: 34px 36px 0;
+}
+
+.modal__form {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "description"
+    "button";
+  grid-template-columns: minmax(auto, 358px);
+  row-gap: 29px;
+  padding: 54px 36px 36px;
+}
+
+.modal__form > :nth-child(3) {
+  margin-top: 19px;
+}
+
+.modal__title {
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: "Inter", Arial, Helvetica;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  padding-bottom: 14px;
+  max-height: 27px;
+}
+
+.modal__description {
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: "Inter", Arial, Helvetica;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  padding-bottom: 14px;
+  max-height: 27px;
+}
+
+.modal__button {
+  max-width: 358px;
+  height: 50px;
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  font-family: "Inter", Arial, Helvetica;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  border: none;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.modal__button:hover {
+  opacity: 0.8;
+}
+
+.modal__close {
+  border: none;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/close-icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
+}
+
+.modal__opened {
+  display: flex;
+}
+
+@media screen and (max-width: 560px) {
+  .modal__close {
+    width: 26px;
+    height: 26px;
+    bottom: calc(100% + 14px);
+    left: calc(100% - 44px);
+  }
+}
