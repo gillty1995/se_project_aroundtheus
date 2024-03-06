@@ -38,6 +38,7 @@
             aria-label="add"
             type="button"
             class="profile__add-button"
+            id="profile__add-button-js"
           ></button>
         </section>
         <section class="cards page__section">
@@ -59,12 +60,38 @@
             name="title"
             id="profile-title-input"
             placeholder="Enter your name..."
+            type="text"
           />
           <input
-            class="modal__description"
+            class="modal__input"
             name="description"
             id="profile-description-input"
             placeholder="Enter description..."
+            type="text"
+          />
+          <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="add-button-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="add-button-close"></button>
+        <h4 class="modal__header">New place</h4>
+        <form class="modal__form">
+          <input
+            class="modal__title"
+            name="title"
+            id="image-title-input"
+            placeholder="Title"
+            type="text"
+          />
+          <input
+            class="modal__input"
+            name="image"
+            id="image-link-input"
+            placeholder="Image link"
+            type="link"
           />
           <button class="modal__button">Save</button>
         </form>
