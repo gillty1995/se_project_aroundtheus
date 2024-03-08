@@ -1,39 +1,34 @@
 # Project 3: Around The U.S.
 
-### Overview
+**Overview**
 
 - Intro
 - Figma
 - Github Pages
 - Images
 - Video
-- Final thoughts
+- Final Thoughts
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes. I was only given information for desktop screens at 1280px, and mobile screens at 320px, but I included an option for tablets at 800-768px.
+This project is made so all the elements are displayed correctly on popular screen sizes. I was only given information for desktop screens at 1280px, and mobile screens at 320px, but I made adjustments so it would be responsive to most screen displays. Used javascript to add functionality to it, with smooth modal open/close transitions by using classList "open**modal and open**preview-modal".
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+- [Link to the project on Figma]: https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?type=design&mode=design#40;Copy)?t=3hvVWRz9LUFsxyNn-6
 
 **Github Pages**
-Here's the link: https://gillty1995.github.io/se_project_aroundtheus/
+
+- [Here's the link]: https://github.com/gillty1995/se_project_aroundtheus
 
 **Images**
 
-I optimized the png images through the provided website.
+- [I optimized the png images through]: https://tinypng.com/
 
-**Video Explanation**
+**Video**
 
-Here is a link to the video explanation of my project. I am still getting usedd to the proper terms to individual elements and properties in coding. So excuse me if I stumble around a bit during the video, I know that I will continue to improve and will have the terms down properly in no time!
-
-https://drive.google.com/file/d/17RZdoGNSyqfVzRaT20ApKzgj_rPySPjZ/view?usp=sharing
+- [Link to video from Sprint 3 explaining technologies and techniques that went into creating the website up to that point]: https://drive.google.com/file/d/17RZdoGNSyqfVzRaT20ApKzgj_rPySPjZ/view?usp=sharing
 
 **Final Thoughts**
 
-This sprint was very challenging as there was a lot of information to take in and process. It was a little overwhelming coming into the sprint with much less direction than the previous sprints, and I thought it was going to be more of a struggle than it turned out to be. I feel so much better and more confident in my abilities now that I've finished this sprint and I feel like I'm grasping the concepts much better than before! I also liked that I was given the opportunity to use the figma desgin and the limited direction to code on my own and problem solve as I worked through the project. Once I had finished it all on my own I watched the provided videos of the tutor doing the project and it helped clear up a lot of confusion around certain aspects of the project.
-
-All in all, I feel excited to finish this sprint and look forward to the feedback and to learn how I can be better and more efficient in my coding!
-
-I hope I didn't make any big mistakes but I am ready to learn from any if I did! Bring it on!
+I feel like the site is coming together very well. All the buttons are functioning correctly, and there are no scroll bars or obstructions at any screen sizes that I've found. The modals all work as they should, and I believe I've stayed true to structuring my code according to BEM as well as keeping my code clean and organized.
