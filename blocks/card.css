@@ -17,6 +17,7 @@
   object-fit: cover;
   border-radius: 10px 10px 0 0;
   min-height: 282px;
+  height: 282px;
 }
 
 .card__title {
@@ -45,12 +46,26 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 895px) {
-  .card__image {
-    width: 230px;
-    height: 230px;
-  }
+.card__like-button-active {
+  background-image: url(../images/like-button-active.svg);
+}
 
+.card__delete-button {
+  position: absolute;
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  width: 18px;
+  height: 19.3px;
+  border: none;
+  margin: 18px 15px 244.7px 249px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card__delete-button:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 895px) {
   .card__title {
     max-width: 165px;
   }

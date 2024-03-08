@@ -91,22 +91,41 @@
             name="image"
             id="image-link-input"
             placeholder="Image link"
-            type="link"
+            type="url"
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button">Create</button>
         </form>
+      </div>
+    </div>
+
+    <div class="modal__preview" id="preview-image-modal">
+      <div class="modal__preview-container">
+        <button
+          class="modal__preview-close"
+          id="preview-image-modal-close"
+          type="button"
+        ></button>
+        <img src="" alt="" class="modal__preview-image" />
+        <p class="modal__preview-caption"></p>
       </div>
     </div>
 
     <template id="card-template">
       <li class="card">
-        <img src="" alt="" class="card__image" />
+        <button
+          aria-label="delete"
+          type="button"
+          class="card__delete-button"
+          id="card__delete-button-js"
+        ></button>
+        <img src="" alt="" class="card__image" id="card__image-js" />
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button
             aria-label="like"
             type="button"
-            class="card__like-button"
+            class="card__like-button card__like-button_active"
+            id="card__like-button-js"
           ></button>
         </div>
       </li>

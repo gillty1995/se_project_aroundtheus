@@ -47,16 +47,30 @@ const addNewCardModal = document.querySelector("#add-button-modal");
 const addNewCardClose = document.querySelector("#add-button-close");
 const newCardTitleInput = document.querySelector("#image-title-input");
 const newCardUrlInput = document.querySelector("#image-link-input");
-
 const addNewCardEditForm = addNewCardModal.querySelector(".modal__form");
+
+const previewImageModal = document.querySelector("#preview-image-modal");
+const previewImageModalEl = previewImageModal.querySelector(
+  ".modal__preview-image"
+);
+const previewCaptionModalEl = previewImageModal.querySelector(
+  ".modal__preview-caption"
+);
+const previewImageModalClose = document.querySelector(
+  "#preview-image-modal-close"
+);
 
 /* FUNCTIONS */
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  modal.classList.remove("modal__preview-visible");
+  modal.classList.remove("modal__visible");
 }
 
 function openPopup(modal) {
+  modal.classList.add("modal__visible");
+  modal.classList.add("modal__preview-visible");
   modal.classList.add("modal_opened");
 }
 
@@ -64,6 +78,22 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  const likeButton = cardElement.querySelector("#card__like-button-js");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button-active");
+  });
+  const deleteButton = cardElement.querySelector("#card__delete-button-js");
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  cardImageEl.addEventListener("click", () => {
+    previewImageModalEl.src = cardData.link;
+    previewCaptionModalEl.textContent = cardData.name;
+
+    openPopup(previewImageModal);
+  });
+
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -109,6 +139,10 @@ addNewCardEditForm.addEventListener("submit", handleAddCardSubmit);
 addNewCardButton.addEventListener("click", () => openPopup(addNewCardModal));
 
 addNewCardClose.addEventListener("click", () => closePopup(addNewCardModal));
+
+previewImageModalClose.addEventListener("click", () =>
+  closePopup(previewImageModal)
+);
 
 /* LOOPS */
 
