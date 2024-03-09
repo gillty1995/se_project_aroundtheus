@@ -50,27 +50,22 @@ const newCardUrlInput = document.querySelector("#image-link-input");
 const addNewCardEditForm = addNewCardModal.querySelector(".modal__form");
 
 const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageModalEl = previewImageModal.querySelector(
-  ".modal__preview-image"
-);
-const previewCaptionModalEl = previewImageModal.querySelector(
-  ".modal__preview-caption"
-);
+const previewImageModalEl = previewImageModal.querySelector(".modal__image");
+const previewCaptionModalEl =
+  previewImageModal.querySelector(".modal__caption");
 const previewImageModalClose = document.querySelector(
   "#preview-image-modal-close"
 );
+
+const closeButtons = document.querySelector(".modal__close");
 
 /* FUNCTIONS */
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  modal.classList.remove("modal__preview-visible");
-  modal.classList.remove("modal__visible");
 }
 
 function openPopup(modal) {
-  modal.classList.add("modal__visible");
-  modal.classList.add("modal__preview-visible");
   modal.classList.add("modal_opened");
 }
 
@@ -89,6 +84,7 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     previewImageModalEl.src = cardData.link;
+    previewImageModalEl.alt = cardData.name;
     previewCaptionModalEl.textContent = cardData.name;
 
     openPopup(previewImageModal);
@@ -119,6 +115,7 @@ function handleAddCardSubmit(e) {
   const name = newCardTitleInput.value;
   const link = newCardUrlInput.value;
   renderCard({ name, link }, cardListEl);
+  e.target.reset();
   closePopup(addNewCardModal);
 }
 
