@@ -61,13 +61,20 @@
             id="profile-title-input"
             placeholder="Enter your name..."
             type="text"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="modal__error"></span>
           <input
             class="modal__input"
             name="description"
             id="profile-description-input"
             placeholder="Enter description..."
             type="text"
+            minlength="2"
+            maxlength="200"
+            required
           />
           <button class="modal__button">Save</button>
         </form>
@@ -132,5 +139,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
