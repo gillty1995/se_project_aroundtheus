@@ -46,20 +46,8 @@
   padding: 54px 36px 36px;
 }
 
-.modal__form > :nth-child(3) {
+.modal__form > :nth-child(5) {
   margin-top: 19px;
-}
-
-.modal__title {
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-family: "Inter", Arial, Helvetica;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  padding-bottom: 14px;
-  max-height: 27px;
 }
 
 .modal__input {
@@ -72,6 +60,7 @@
   line-height: 1.2;
   padding-bottom: 14px;
   max-height: 27px;
+  outline-color: rgba(0, 157, 255, 0.4);
 }
 
 .modal__button {
@@ -151,7 +140,11 @@
   transition: opacity 0.6s linear;
 }
 
-.modal__input_type_error:invalid {
+.modal__error {
+  display: none;
+}
+
+.modal__input:invalid {
   border-bottom: 1px solid #f00;
 }
 
