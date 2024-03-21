@@ -46,8 +46,12 @@
   padding: 54px 36px 36px;
 }
 
+.modal__form > :nth-child(3) {
+  margin-top: -19px;
+}
+
 .modal__form > :nth-child(5) {
-  margin-top: 19px;
+  margin-top: -19px;
 }
 
 .modal__input {
@@ -141,11 +145,30 @@
 }
 
 .modal__error {
-  display: none;
+  display: inline-block;
+  font-family: "Inter", Arial, Helvetica;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0em;
+  color: red;
+  text-align: left;
+  margin: -25px 0 -29px;
+  padding: 0;
+}
+
+.modal__error_visible {
+  visibility: visible;
 }
 
 .modal__input:invalid {
   border-bottom: 1px solid #f00;
+}
+
+.modal__button_disabled {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 595px) {
