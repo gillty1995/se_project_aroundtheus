@@ -57,16 +57,25 @@ const previewImageModalClose = document.querySelector(
   "#preview-image-modal-close"
 );
 
-const closeButtons = document.querySelector(".modal__close");
-
 /* FUNCTIONS */
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", escKey);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", escKey);
+}
+
+function escKey(e) {
+  if (e.key === "Escape") {
+    const esc = document.querySelector(".modal_opened");
+    if (esc) {
+      closePopup(esc);
+    }
+  }
 }
 
 function getCardElement(cardData) {
@@ -144,13 +153,6 @@ overlays.forEach((overlay) => {
       closePopup(overlay);
     }
   });
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    const escKey = document.querySelector(".modal_opened");
-    closePopup(escKey);
-  }
 });
 
 /* LOOPS */
