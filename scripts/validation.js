@@ -1,3 +1,5 @@
+// VALIDATION
+
 const showInputError = (
   formElement,
   inputElement,
@@ -32,21 +34,35 @@ const hasInvalidInput = (inputList) => {
   return !inputList.every((inputElement) => inputElement.validity.valid);
 };
 
-const toggleButtonState = (
-  inputElements,
-  submitButton,
-  { inactiveButtonClass }
-) => {
-  if (hasInvalidInput(inputElements)) {
+// BUTTONS
+
+const disableButton = (submitButton, inactiveButtonClass, disabled) => {
+  if (disabled) {
     submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
     return;
-  } else {
+  }
+};
+
+const enableButton = (submitButton, inactiveButtonClass, enabled) => {
+  if (enabled) {
     submitButton.classList.remove(inactiveButtonClass);
     submitButton.disabled = false;
     return;
   }
 };
+
+const toggleButtonState = (
+  inputElements,
+  submitButton,
+  { inactiveButtonClass }
+) => {
+  const invalidInput = hasInvalidInput(inputElements);
+  disableButton(submitButton, inactiveButtonClass, invalidInput);
+  enableButton(submitButton, inactiveButtonClass, !invalidInput);
+};
+
+// EVENT LISTENERS
 
 const setEventListeners = (formElement, options) => {
   const { inputSelector } = options;
@@ -72,6 +88,8 @@ const enableValidation = (options) => {
     setEventListeners(formElement, options);
   });
 };
+
+// OPTIONS
 
 const config = {
   formSelector: ".modal__form",

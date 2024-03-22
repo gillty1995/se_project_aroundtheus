@@ -136,6 +136,23 @@ previewImageModalClose.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
 
+const overlays = document.querySelectorAll(".modal");
+
+overlays.forEach((overlay) => {
+  overlay.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal_opened")) {
+      closePopup(overlay);
+    }
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const escKey = document.querySelector(".modal_opened");
+    closePopup(escKey);
+  }
+});
+
 /* LOOPS */
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
