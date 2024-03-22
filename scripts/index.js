@@ -145,12 +145,12 @@ previewImageModalClose.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
 
-const overlays = document.querySelectorAll(".modal");
+const modals = document.querySelectorAll(".modal");
 
-overlays.forEach((overlay) => {
-  overlay.addEventListener("click", (e) => {
+modals.forEach((modal) => {
+  modal.addEventListener("click", (e) => {
     if (e.target.classList.contains("modal_opened")) {
-      closePopup(overlay);
+      closePopup(modal);
     }
   });
 });
