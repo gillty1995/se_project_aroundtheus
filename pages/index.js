@@ -1,3 +1,9 @@
+// IMPORTS
+
+import Card from "../components/Card.js";
+
+// INITIAL LOADOUT
+
 const initialCards = [
   {
     name: "Kenai Fjords",
@@ -25,7 +31,7 @@ const initialCards = [
   },
 ];
 
-/* ELEMENTS */
+// ELEMENTS
 
 const profileEditButton = document.querySelector("#profile__edit-button-js");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -57,7 +63,7 @@ const previewImageModalClose = document.querySelector(
   "#preview-image-modal-close"
 );
 
-/* FUNCTIONS */
+// FUNCTIONS
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
@@ -78,37 +84,29 @@ function escKey(e) {
   }
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector("#card__like-button-js");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button-active");
-  });
-  const deleteButton = cardElement.querySelector("#card__delete-button-js");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.addEventListener("click", () => {
-    previewImageModalEl.src = cardData.link;
-    previewImageModalEl.alt = cardData.name;
-    previewCaptionModalEl.textContent = cardData.name;
-
-    openPopup(previewImageModal);
-  });
-
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  return cardElement;
+function newCard(data) {
+  const cardElement = new Card(data, "#card-template", handleImageClick);
+  // cardElement._setEventListeners();
+  cardListEl.prepend(cardElement.getView());
+  // return cardElement.getView();
 }
 
-function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+function renderCard(cardElement) {
   cardListEl.prepend(cardElement);
 }
+
+function handleImageClick(data) {
+  previewImageModalEl.src = data.link;
+  previewImageModalEl.alt = data.name;
+  previewCaptionModalEl.textContent = data.name;
+
+  openPopup(previewImageModal);
+}
+
+initialCards.forEach((data) => {
+  const cardElement = newCard(data);
+  cardListEl.append(cardElement);
+});
 
 /* EVENT HANDLERS */
 
@@ -123,12 +121,12 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const name = newCardTitleInput.value;
   const link = newCardUrlInput.value;
-  renderCard({ name, link }, cardListEl);
+  newCard({ name, link });
   e.target.reset();
   closePopup(addNewCardModal);
 }
 
-/* EVENT LISTENERS */
+// EVENT LISTENERS
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent.trim();
@@ -155,6 +153,6 @@ modals.forEach((modal) => {
   });
 });
 
-/* LOOPS */
+// LOOPS
 
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+// initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
