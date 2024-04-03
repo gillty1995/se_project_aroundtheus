@@ -86,9 +86,7 @@ function escKey(e) {
 
 function newCard(data) {
   const cardElement = new Card(data, "#card-template", handleImageClick);
-  // cardElement._setEventListeners();
-  cardListEl.prepend(cardElement.getView());
-  // return cardElement.getView();
+  return cardElement.getView();
 }
 
 function renderCard(cardElement) {
@@ -105,7 +103,7 @@ function handleImageClick(data) {
 
 initialCards.forEach((data) => {
   const cardElement = newCard(data);
-  cardListEl.append(cardElement);
+  renderCard(cardElement);
 });
 
 /* EVENT HANDLERS */
@@ -152,7 +150,3 @@ modals.forEach((modal) => {
     }
   });
 });
-
-// LOOPS
-
-// initialCards.forEach((cardData) => renderCard(cardData, cardListEl));

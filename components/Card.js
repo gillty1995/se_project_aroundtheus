@@ -16,13 +16,13 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._likeButton = this._cardElement.querySelector("#card__like-button-js");
+    this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._likeButton.addEventListener("click", () => {
       this._handleLikeButton();
     });
 
     this._deleteButton = this._cardElement.querySelector(
-      "#card__delete-button-js"
+      ".card__delete-button"
     );
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteButton();
@@ -34,9 +34,7 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    this._likeButton
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button-active");
+    this._likeButton.classList.toggle("card__like-button-active");
   }
 
   _handleDeleteButton() {
