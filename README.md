@@ -31,4 +31,4 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Final Thoughts**
 
-I feel like the site is coming together very well. All the buttons are functioning correctly, and there are no scroll bars or obstructions at any screen sizes that I've found. The modals all work as they should, and I believe I've stayed true to structuring my code according to BEM as well as keeping my code clean and organized.
+Refactored according to OOP principles.

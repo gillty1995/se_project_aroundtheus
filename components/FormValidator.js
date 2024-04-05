@@ -56,8 +56,6 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this._inputElements = this._form.querySelectorAll(this._inputSelector);
-    this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (e) => {
         this._checkInputValidity(inputElement);
@@ -74,13 +72,10 @@ export default class FormValidator {
   }
 
   resetValidation() {
+    this._form.reset();
     this._toggleButtonState();
     this._inputElements.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-    this._submitButton.disabled = true;
-    this._submitButton.classList.add(this._inactiveButtonClass);
-
-    this._form.reset();
   }
 }

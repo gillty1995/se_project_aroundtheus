@@ -44,16 +44,16 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileEditForm = document.forms["profile-edit-form"];
 
 const cardListEl = document.querySelector(".cards__list");
 
-const addNewCardButton = document.querySelector("#profile__add-button-js");
-const addNewCardModal = document.querySelector("#add-button-modal");
-const addNewCardClose = document.querySelector("#add-button-close");
-const newCardTitleInput = document.querySelector("#image-title-input");
-const newCardUrlInput = document.querySelector("#image-link-input");
-const addNewCardEditForm = addNewCardModal.querySelector(".modal__form");
+const addcreateCardButton = document.querySelector("#profile__add-button-js");
+const addcreateCardModal = document.querySelector("#add-button-modal");
+const addcreateCardClose = document.querySelector("#add-button-close");
+const createCardTitleInput = document.querySelector("#image-title-input");
+const createCardUrlInput = document.querySelector("#image-link-input");
+const addcreateCardEditForm = document.forms["add-button-form"];
 
 const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageModalEl = previewImageModal.querySelector(".modal__image");
@@ -67,24 +67,24 @@ const previewImageModalClose = document.querySelector(
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", escKey);
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", escKey);
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
-function escKey(e) {
+function handleEscapeKey(e) {
   if (e.key === "Escape") {
-    const esc = document.querySelector(".modal_opened");
-    if (esc) {
-      closePopup(esc);
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closePopup(openedModal);
     }
   }
 }
 
-function newCard(data) {
+function createCard(data) {
   const cardElement = new Card(data, "#card-template", handleImageClick);
   return cardElement.getView();
 }
@@ -102,7 +102,7 @@ function handleImageClick(data) {
 }
 
 initialCards.forEach((data) => {
-  const cardElement = newCard(data);
+  const cardElement = createCard(data);
   renderCard(cardElement);
 });
 
@@ -117,32 +117,34 @@ function handleProfileEditSubmit(e) {
 
 function handleAddCardSubmit(e) {
   e.preventDefault();
-  const card = newCard({
-    name: newCardTitleInput.value,
-    link: newCardUrlInput.value,
+  const card = createCard({
+    name: createCardTitleInput.value,
+    link: createCardUrlInput.value,
   });
   cardListEl.prepend(card);
-  closePopup(addNewCardModal);
+  closePopup(addcreateCardModal);
   e.target.reset();
 }
 
 // EVENT LISTENERS
 
 profileEditButton.addEventListener("click", () => {
+  formValidators["profile-edit-form"].resetValidation();
   profileTitleInput.value = profileTitle.textContent.trim();
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  formValidators["profile-edit-form"].resetValidation();
   openPopup(profileEditModal);
 });
 
 profileEditClose.addEventListener("click", () => closePopup(profileEditModal));
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-addNewCardEditForm.addEventListener("submit", handleAddCardSubmit);
-addNewCardButton.addEventListener("click", () => {
-  openPopup(addNewCardModal);
+addcreateCardEditForm.addEventListener("submit", handleAddCardSubmit);
+addcreateCardButton.addEventListener("click", () => {
+  openPopup(addcreateCardModal);
   formValidators["add-button-form"].resetValidation();
 });
-addNewCardClose.addEventListener("click", () => closePopup(addNewCardModal));
+addcreateCardClose.addEventListener("click", () =>
+  closePopup(addcreateCardModal)
+);
 previewImageModalClose.addEventListener("click", () =>
   closePopup(previewImageModal)
 );
