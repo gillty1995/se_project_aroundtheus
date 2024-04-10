@@ -15,19 +15,19 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Figma**
 
-- [Link to the project on Figma]: https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?type=design&mode=design#40;Copy)?t=3hvVWRz9LUFsxyNn-6
+- (Link to the project on Figma): https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?type=design&mode=design#40;Copy)?t=3hvVWRz9LUFsxyNn-6
 
 **Github Pages**
 
-- [Here's the link]: https://gillty1995.github.io/se_project_aroundtheus/
+- (Here's the link): https://gillty1995.github.io/se_project_aroundtheus/
 
 **Images**
 
-- [I optimized the png images through]: https://tinypng.com/
+- (I optimized the png images through): https://tinypng.com/
 
 **Video**
 
-- [Link to video from Sprint 3 explaining technologies and techniques that went into creating the website up to that point]: https://drive.google.com/file/d/17RZdoGNSyqfVzRaT20ApKzgj_rPySPjZ/view?usp=sharing
+- (Link to video from Sprint 3 explaining technologies and techniques that went into creating the website up to that point): https://drive.google.com/file/d/17RZdoGNSyqfVzRaT20ApKzgj_rPySPjZ/view?usp=sharing
 
 **Final Thoughts**
 
