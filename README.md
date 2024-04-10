@@ -19,7 +19,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Github Pages**
 
-- [Here's the link]: https://github.com/gillty1995/se_project_aroundtheus
+- [Here's the link]: https://gillty1995.github.io/se_project_aroundtheus/
 
 **Images**
 
@@ -31,4 +31,4 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Final Thoughts**
 
-Refactored according to OOP principles.
+Refactored according to OOP principles.    
