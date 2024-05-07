@@ -1,7 +1,9 @@
 // IMPORTS
-
+import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import ModalWithImage from "../components/ModalWithImage.js";
+import ModalWithForm from "../components/ModalWithForm.js";
 
 // INITIAL LOADOUT
 
@@ -55,13 +57,21 @@ const createCardTitleInput = document.querySelector("#image-title-input");
 const createCardUrlInput = document.querySelector("#image-link-input");
 const addcreateCardEditForm = document.forms["add-button-form"];
 
-const previewImageModal = document.querySelector("#preview-image-modal");
 const previewImageModalEl = previewImageModal.querySelector(".modal__image");
 const previewCaptionModalEl =
   previewImageModal.querySelector(".modal__caption");
 const previewImageModalClose = document.querySelector(
   "#preview-image-modal-close"
 );
+
+const profileModal = new ModalWithForm("#edit-modal", handleProfileFormSubmit);
+profileModal.setEventListeners();
+
+const cardModal = new ModalWithForm("#add-card-modal", handleAddCardFormSubmit);
+cardModal.setEventListeners();
+
+const previewImageModal = new ModalWithImage("#preview-image-modal");
+previewImageModal._setEventListeners();
 
 // FUNCTIONS
 
