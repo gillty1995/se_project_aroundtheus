@@ -56,10 +56,8 @@ export const createCardTitleInput =
 export const createCardUrlInput = document.querySelector("#image-link-input");
 export const addcreateCardEditForm = document.forms["add-button-form"];
 
-export const previewImageModalEl =
-  previewImageModal.querySelector(".modal__image");
-export const previewCaptionModalEl =
-  previewImageModal.querySelector(".modal__caption");
+export const previewImageModalEl = document.querySelector(".modal__image");
+export const previewCaptionModalEl = document.querySelector(".modal__caption");
 export const previewImageModalClose = document.querySelector(
   "#preview-image-modal-close"
 );
