@@ -13,7 +13,6 @@ import {
   settings,
   profileEditButton,
   addcreateCardButton,
-  profileEditForm,
   nameInput,
   jobInput,
 } from "../utils/constants.js";
@@ -32,11 +31,6 @@ const cardsSection = new Section(
 );
 
 cardsSection.renderItems();
-
-// VALIDATION
-
-const profileEditFormValidator = new FormValidator(settings, profileEditForm);
-profileEditFormValidator.enableValidation();
 
 // MODALS
 
@@ -75,7 +69,7 @@ function renderCard(cardElement) {
 // EVENT HANDLERS
 
 function handleProfileEditSubmit(inputValues) {
-  // inputValues.preventDefault();
+  console.log(inputValues);
   userInfo.setUserInfo({
     nameInput: inputValues.name,
     jobInput: inputValues.job,

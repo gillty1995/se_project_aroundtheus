@@ -75,4 +75,4 @@ export const settings = {
 };
 
 export const nameInput = document.querySelector("[name='name']");
-export const jobInput = document.querySelector("[job='job']");
+export const jobInput = document.querySelector("[name='job']");
