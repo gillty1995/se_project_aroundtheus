@@ -31,17 +31,6 @@ export const formList = document.querySelectorAll(".modal__form");
 export const profileEditButton = document.querySelector(
   "#profile__edit-button-js"
 );
-export const profileEditModal = document.querySelector("#profile-edit-modal");
-export const profileEditClose = document.querySelector("#profile-edit-close");
-
-export const profileTitle = document.querySelector("#profile__title-js");
-export const profileDescription = document.querySelector(
-  "#profile__description-js"
-);
-export const profileTitleInput = document.querySelector("#profile-title-input");
-export const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
 export const profileEditForm = document.forms["profile-edit-form"];
 
 export const cardListEl = document.querySelector(".cards__list");
@@ -49,18 +38,31 @@ export const cardListEl = document.querySelector(".cards__list");
 export const addcreateCardButton = document.querySelector(
   "#profile__add-button-js"
 );
-export const addcreateCardModal = document.querySelector("#add-button-modal");
-export const addcreateCardClose = document.querySelector("#add-button-close");
-export const createCardTitleInput =
-  document.querySelector("#image-title-input");
-export const createCardUrlInput = document.querySelector("#image-link-input");
-export const addcreateCardEditForm = document.forms["add-button-form"];
 
-export const previewImageModalEl = document.querySelector(".modal__image");
-export const previewCaptionModalEl = document.querySelector(".modal__caption");
-export const previewImageModalClose = document.querySelector(
-  "#preview-image-modal-close"
-);
+// export const profileEditModal = document.querySelector("#profile-edit-modal");
+// export const profileEditClose = document.querySelector("#profile-edit-close");
+
+// export const profileTitle = document.querySelector("#profile__title-js");
+// export const profileDescription = document.querySelector(
+//   "#profile__description-js"
+// );
+// export const profileTitleInput = document.querySelector("#profile-title-input");
+// export const profileDescriptionInput = document.querySelector(
+//   "#profile-description-input"
+// );
+
+// export const addcreateCardModal = document.querySelector("#add-button-modal");
+// export const addcreateCardClose = document.querySelector("#add-button-close");
+// export const createCardTitleInput =
+//   document.querySelector("#image-title-input");
+// export const createCardUrlInput = document.querySelector("#image-link-input");
+// export const addcreateCardEditForm = document.forms["add-button-form"];
+
+// export const previewImageModalEl = document.querySelector(".modal__image");
+// export const previewCaptionModalEl = document.querySelector(".modal__caption");
+// export const previewImageModalClose = document.querySelector(
+//   "#preview-image-modal-close"
+// );
 
 export const settings = {
   formSelector: ".modal__form",
@@ -74,6 +76,3 @@ export const settings = {
 
 export const nameInput = document.querySelector("[name='name']");
 export const jobInput = document.querySelector("[job='job']");
-
-// export const profileName = document.querySelector(".profile__title");
-// export const profileJob = document.querySelector(".profile__description");
