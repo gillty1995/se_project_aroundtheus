@@ -102,20 +102,6 @@ initialCards.forEach((data) => {
   renderCard(cardElement);
 });
 
-// VALIDATION
-
-const formValidators = {};
-const enableValidation = (formList) => {
-  formList.forEach((form) => {
-    const formValidator = new FormValidator(settings, form);
-    formValidator.enableValidation();
-    formValidators[form.getAttribute("id")] = formValidator;
-    return formValidators;
-  });
-};
-
-enableValidation(formList);
-
 // EVENT HANDLERS
 
 // function handleProfileEditSubmit(e) {
@@ -147,15 +133,28 @@ function handleProfileEditSubmit(inputValues) {
 // }
 
 function handleAddCardSubmit(inputValues) {
-  inputValues.preventDefault();
   const name = inputValues.title;
   const link = inputValues.url;
   const data = { name, link };
 
-  cardsSection.prependItem(createCard(data));
+  cardsSection.addItem(createCard(data));
   cardModal.close();
   cardModal._modalForm.reset();
 }
+
+// VALIDATION
+
+const formValidators = {};
+const enableValidation = (formList) => {
+  formList.forEach((form) => {
+    const formValidator = new FormValidator(settings, form);
+    formValidator.enableValidation();
+    formValidators[form.getAttribute("id")] = formValidator;
+    return formValidators;
+  });
+};
+
+enableValidation(formList);
 
 // EVENT LISTENERS
 
@@ -167,11 +166,11 @@ function handleAddCardSubmit(inputValues) {
 // });
 
 profileEditButton.addEventListener("click", () => {
-  formValidators["profile-edit-form"].resetValidation();
   const currentUser = userInfo.getUserInfo();
   nameInput.value = currentUser.name;
   jobInput.value = currentUser.job;
   profileModal.open();
+  formValidators["profile-edit-form"].resetValidation();
 });
 
 addcreateCardButton.addEventListener("click", () => {

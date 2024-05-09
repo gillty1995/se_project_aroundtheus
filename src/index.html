@@ -8,19 +8,13 @@
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img
-          src="./images/logo.svg"
-          alt="around the u.s. logo"
-          class="header__logo"
-        />
+        <img src="<%=require("./images/logo.svg")%>" alt="around the u.s. logo"
+        class="header__logo" />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="./images/jacques-cousteau.jpg"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <img src="<%=require("./images/jacques-cousteau.jpg")%>" alt="Avatar"
+          class="profile__image" />
           <div class="profile__info">
             <h1 class="profile__title" id="profile__title-js">Name</h1>
             <button
@@ -56,8 +50,8 @@
         <form class="modal__form" id="profile-edit-form" novalidate>
           <input
             class="modal__input"
-            name="title"
-            id="profile-title-input"
+            name="name"
+            id="profile-name-input"
             placeholder="Enter your name..."
             type="text"
             minlength="2"
@@ -70,8 +64,8 @@
           ></span>
           <input
             class="modal__input"
-            name="description"
-            id="profile-description-input"
+            job="job"
+            id="profile-job-input"
             placeholder="Enter description..."
             type="text"
             minlength="2"
@@ -130,7 +124,7 @@
           id="preview-image-modal-close"
           type="button"
         ></button>
-        <img src="" alt="" class="modal__image" />
+        <img src="<%""%>" alt="" class="modal__image" />
         <p class="modal__caption"></p>
       </div>
     </div>
