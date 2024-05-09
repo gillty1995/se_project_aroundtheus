@@ -69,10 +69,9 @@ function renderCard(cardElement) {
 // EVENT HANDLERS
 
 function handleProfileEditSubmit(inputValues) {
-  console.log(inputValues);
   userInfo.setUserInfo({
-    nameInput: inputValues.name,
-    jobInput: inputValues.job,
+    name: inputValues.name,
+    job: inputValues.job,
   });
 
   profileModal.close();
@@ -80,7 +79,7 @@ function handleProfileEditSubmit(inputValues) {
 
 function handleAddCardSubmit(inputValues) {
   const name = inputValues.title;
-  const link = inputValues.url;
+  const link = inputValues.image;
   const data = { name, link };
 
   cardsSection.addItem(createCard(data));
