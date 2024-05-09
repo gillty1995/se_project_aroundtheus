@@ -7,7 +7,6 @@ import ModalWithImage from "../components/ModalWithImage.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import {
-  cardListEl,
   formList,
   initialCards,
   settings,
@@ -22,10 +21,7 @@ import {
 const cardsSection = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item);
-      renderCard(cardElement);
-    },
+    renderer: renderCard,
   },
   ".cards__list"
 );
@@ -62,8 +58,9 @@ function createCard(data) {
   return cardElement.getView();
 }
 
-function renderCard(cardElement) {
-  cardListEl.append(cardElement);
+function renderCard(item) {
+  const cardElement = createCard(item);
+  cardsSection.addItem(cardElement);
 }
 
 // EVENT HANDLERS
@@ -84,7 +81,6 @@ function handleAddCardSubmit(inputValues) {
 
   cardsSection.addItem(createCard(data));
   cardModal.close();
-  cardModal._modalForm.reset();
 }
 
 // EVENT LISTENERS
@@ -100,16 +96,6 @@ profileEditButton.addEventListener("click", () => {
 addcreateCardButton.addEventListener("click", () => {
   cardModal.open();
   formValidators["add-button-form"].resetValidation();
-});
-
-const modals = document.querySelectorAll(".modal");
-
-modals.forEach((modal) => {
-  modal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal_opened")) {
-      modal.close();
-    }
-  });
 });
 
 // VALIDATION

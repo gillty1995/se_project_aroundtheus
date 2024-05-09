@@ -9,12 +9,12 @@ export default class ModalWithForm extends Modal {
   }
 
   _getInputValues() {
-    const InputValues = {};
+    const inputValues = {};
     this._inputElements.forEach((input) => {
-      InputValues[input.name] = input.value;
+      inputValues[input.name] = input.value;
     });
 
-    return InputValues;
+    return inputValues;
   }
 
   setEventListeners() {

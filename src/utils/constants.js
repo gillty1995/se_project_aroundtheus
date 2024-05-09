@@ -31,8 +31,6 @@ export const profileEditButton = document.querySelector(
 );
 export const profileEditForm = document.forms["profile-edit-form"];
 
-export const cardListEl = document.querySelector(".cards__list");
-
 export const addcreateCardButton = document.querySelector(
   "#profile__add-button-js"
 );
