@@ -14,4 +14,12 @@ export default class ModalWithImage extends Modal {
     this._modalImageCaption.textContent = data.name;
     super.open();
   }
+
+  setEventListeners() {
+    super._setEventListeners();
+    this._modalImage.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // this._handleFormSubmit(this._getInputValues());
+    });
+  }
 }

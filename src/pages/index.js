@@ -40,13 +40,13 @@ const cardModal = new ModalWithForm("#add-button-modal", handleAddCardSubmit);
 cardModal.setEventListeners();
 
 const previewImageModal = new ModalWithImage("#preview-image-modal");
-previewImageModal._setEventListeners();
+previewImageModal.setEventListeners();
 
 // USER INFO
 
 const userInfo = new UserInfo({
-  nameElementSelector: "#profile__title-js",
-  jobElementSelector: "#profile__description-js",
+  nameElementSelector: ".profile__title",
+  jobElementSelector: ".profile__description",
 });
 
 // FUNCTIONS
@@ -62,6 +62,22 @@ function renderCard(item) {
   const cardElement = createCard(item);
   cardsSection.addItem(cardElement);
 }
+
+// EVENT LISTENERS
+
+profileEditButton.addEventListener("click", () => {
+  const currentUser = userInfo.getUserInfo();
+  nameInput.value = currentUser.name;
+  jobInput.value = currentUser.job;
+
+  profileModal.open();
+  formValidators["profile-edit-form"].resetValidation();
+});
+
+addcreateCardButton.addEventListener("click", () => {
+  cardModal.open();
+  formValidators["add-button-form"].resetValidation();
+});
 
 // EVENT HANDLERS
 
@@ -82,21 +98,6 @@ function handleAddCardSubmit(inputValues) {
   cardsSection.addItem(createCard(data));
   cardModal.close();
 }
-
-// EVENT LISTENERS
-
-profileEditButton.addEventListener("click", () => {
-  const currentUser = userInfo.getUserInfo();
-  nameInput.value = currentUser.name;
-  jobInput.value = currentUser.job;
-  profileModal.open();
-  formValidators["profile-edit-form"].resetValidation();
-});
-
-addcreateCardButton.addEventListener("click", () => {
-  cardModal.open();
-  formValidators["add-button-form"].resetValidation();
-});
 
 // VALIDATION
 
