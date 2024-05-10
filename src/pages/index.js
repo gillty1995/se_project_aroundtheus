@@ -67,11 +67,10 @@ function renderCard(item) {
 
 profileEditButton.addEventListener("click", () => {
   const currentUser = userInfo.getUserInfo();
-  nameInput.value = currentUser.name;
-  jobInput.value = currentUser.job;
+  nameInput.value = currentUser.name.trim();
+  jobInput.value = currentUser.job.trim();
 
   profileModal.open();
-  formValidators["profile-edit-form"].resetValidation();
 });
 
 addcreateCardButton.addEventListener("click", () => {
