@@ -69,6 +69,28 @@ const userInfo = new UserInfo({
   jobElementSelector: ".profile__description",
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  api
+    .getUserInfo()
+    .then((userInfo) => {
+      nameInput.value = userInfo.name || "";
+      jobInput.value = userInfo.job || "";
+    })
+    .catch((err) => {
+      console.error("Error fetching user info:", err);
+    });
+});
+
+// api
+//   .getUserInfo()
+//   .then((userInfo) => {
+//     nameInput.value = userInfo.name || "";
+//     jobInput.value = userInfo.job || "";
+//   })
+//   .catch((err) => {
+//     console.error("Error fetching user info:", err);
+//   });
+
 // FUNCTIONS
 
 function createCard(data) {
@@ -101,10 +123,25 @@ addcreateCardButton.addEventListener("click", () => {
 // EVENT HANDLERS
 
 function handleProfileEditSubmit(inputValues) {
-  userInfo.setUserInfo({
+  const updatedUserInfo = {
     name: inputValues.name,
     job: inputValues.job,
-  });
+  };
+
+  userInfo.setUserInfo(updatedUserInfo);
+  // userInfo.setUserInfo({
+  //   name: inputValues.name,
+  //   job: inputValues.job,
+  // });
+
+  api
+    .updateUserInfo(updatedUserInfo)
+    .then((updatedData) => {
+      console.log("User information updated successfully:", updatedData);
+    })
+    .catch((err) => {
+      console.error("Error updating user information:", err);
+    });
 
   profileModal.close();
 }
