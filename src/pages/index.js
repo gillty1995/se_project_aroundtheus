@@ -6,6 +6,7 @@ import Card from "../components/Card.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 import {
   formList,
   initialCards,
@@ -15,6 +16,16 @@ import {
   nameInput,
   jobInput,
 } from "../utils/constants.js";
+
+// API
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "a44aa497-1b5c-4737-a030-aa953cdc7c47",
+    "Content-Type": "application/json",
+  },
+});
 
 // SECTION CLASS
 
@@ -27,6 +38,15 @@ const cardsSection = new Section(
 );
 
 cardsSection.renderItems();
+
+api
+  .getInitialCards()
+  .then((initialCards) => {
+    cardsSection.renderItems(initialCards);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // MODALS
 
