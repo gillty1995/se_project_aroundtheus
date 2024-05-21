@@ -14,7 +14,7 @@ import {
   profileEditButton,
   addcreateCardButton,
   nameInput,
-  jobInput,
+  aboutInput,
 } from "../utils/constants.js";
 
 // API
@@ -66,7 +66,7 @@ previewImageModal.setEventListeners();
 
 const userInfo = new UserInfo({
   nameElementSelector: ".profile__title",
-  jobElementSelector: ".profile__description",
+  aboutElementSelector: ".profile__description",
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .getUserInfo()
     .then((userInfo) => {
       nameInput.value = userInfo.name || "";
-      jobInput.value = userInfo.job || "";
+      aboutInput.value = userInfo.about || "";
     })
     .catch((err) => {
       console.error("Error fetching user info:", err);
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //   .getUserInfo()
 //   .then((userInfo) => {
 //     nameInput.value = userInfo.name || "";
-//     jobInput.value = userInfo.job || "";
+//     aboutInput.value = userInfo.about || "";
 //   })
 //   .catch((err) => {
 //     console.error("Error fetching user info:", err);
@@ -110,7 +110,7 @@ function renderCard(item) {
 profileEditButton.addEventListener("click", () => {
   const currentUser = userInfo.getUserInfo();
   nameInput.value = currentUser.name.trim();
-  jobInput.value = currentUser.job.trim();
+  aboutInput.value = currentUser.about.trim();
 
   profileModal.open();
 });
@@ -125,13 +125,13 @@ addcreateCardButton.addEventListener("click", () => {
 function handleProfileEditSubmit(inputValues) {
   const updatedUserInfo = {
     name: inputValues.name,
-    job: inputValues.job,
+    about: inputValues.about,
   };
 
   userInfo.setUserInfo(updatedUserInfo);
   // userInfo.setUserInfo({
   //   name: inputValues.name,
-  //   job: inputValues.job,
+  //   about: inputValues.about,
   // });
 
   api
