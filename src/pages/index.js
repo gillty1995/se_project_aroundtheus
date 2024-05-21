@@ -37,10 +37,10 @@ const cardsSection = new Section(
   ".cards__list"
 );
 
-cardsSection.renderItems();
+// cardsSection.renderItems();
 
 api
-  .getInitialCards()
+  .getInitialCards(handleDeleteCard)
   .then((initialCards) => {
     cardsSection.renderItems(initialCards);
   })
@@ -72,9 +72,10 @@ const userInfo = new UserInfo({
 document.addEventListener("DOMContentLoaded", () => {
   api
     .getUserInfo()
-    .then((userInfo) => {
-      nameInput.value = userInfo.name || "";
-      aboutInput.value = userInfo.about || "";
+    .then((userData) => {
+      nameInput.value = userData.name || "";
+      aboutInput.value = userData.about || "";
+      userInfo.setUserInfo(userData);
     })
     .catch((err) => {
       console.error("Error fetching user info:", err);
@@ -94,9 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // FUNCTIONS
 
 function createCard(data) {
-  const cardElement = new Card(data, "#card-template", () => {
-    previewImageModal.open(data);
-  });
+  const cardElement = new Card(
+    data,
+    "#card-template",
+    () => {
+      previewImageModal.open(data);
+    },
+    handleDeleteCard
+  );
   return cardElement.getView();
 }
 
@@ -128,23 +134,35 @@ function handleProfileEditSubmit(inputValues) {
     about: inputValues.about,
   };
 
-  userInfo.setUserInfo(updatedUserInfo);
-  // userInfo.setUserInfo({
-  //   name: inputValues.name,
-  //   about: inputValues.about,
-  // });
-
   api
     .updateUserInfo(updatedUserInfo)
     .then((updatedData) => {
-      console.log("User information updated successfully:", updatedData);
+      userInfo.setUserInfo(updatedData);
+      profileModal.close();
     })
     .catch((err) => {
       console.error("Error updating user information:", err);
     });
-
-  profileModal.close();
 }
+
+// userInfo.setUserInfo(updatedUserInfo);
+
+// userInfo.setUserInfo({
+//   name: inputValues.name,
+//   about: inputValues.about,
+// });
+
+//   api
+//     .updateUserInfo(updatedUserInfo)
+//     .then((updatedData) => {
+//       console.log("User information updated successfully:", updatedData);
+//     })
+//     .catch((err) => {
+//       console.error("Error updating user information:", err);
+//     });
+
+//   profileModal.close();
+// }
 
 function handleAddCardSubmit(inputValues) {
   const name = inputValues.title;
@@ -163,6 +181,20 @@ function handleAddCardSubmit(inputValues) {
 
   // cardsSection.addItem(createCard(data));
   // cardModal.close();
+}
+
+function handleDeleteCard(cardId) {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      const cardElement = document.querySelector(`[data-id='${cardId}']`);
+      if (cardElement) {
+        cardElement.remove();
+      }
+    })
+    .catch((err) => {
+      console.error("Error deleting card:", err);
+    });
 }
 
 // VALIDATION
