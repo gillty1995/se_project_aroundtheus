@@ -9,7 +9,6 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import {
   formList,
-  initialCards,
   settings,
   profileEditButton,
   addcreateCardButton,
@@ -31,22 +30,31 @@ const api = new Api({
 
 const cardsSection = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer: renderCard,
   },
   ".cards__list"
 );
 
-// cardsSection.renderItems();
-
 api
-  .getInitialCards(handleDeleteCard)
+  .getInitialCards()
   .then((initialCards) => {
     cardsSection.renderItems(initialCards);
   })
   .catch((err) => {
     console.log(err);
   });
+
+// cardsSection.renderItems();
+
+// api
+//   .getInitialCards(handleDeleteCard)
+//   .then((initialCards) => {
+//     cardsSection.renderItems(initialCards);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // MODALS
 
@@ -71,16 +79,30 @@ const userInfo = new UserInfo({
 
 document.addEventListener("DOMContentLoaded", () => {
   api
-    .getUserInfo()
-    .then((userData) => {
+    .getUserInfoAndCards()
+    .then(([userData, initialCards]) => {
       nameInput.value = userData.name || "";
       aboutInput.value = userData.about || "";
       userInfo.setUserInfo(userData);
+      initialCards.forEach((cardData) => renderCard(cardData));
     })
     .catch((err) => {
-      console.error("Error fetching user info:", err);
+      console.error("Error fetching user info and cards:", err);
     });
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   api
+//     .getUserInfo()
+//     .then((userData) => {
+//       nameInput.value = userData.name || "";
+//       aboutInput.value = userData.about || "";
+//       userInfo.setUserInfo(userData);
+//     })
+//     .catch((err) => {
+//       console.error("Error fetching user info:", err);
+//     });
+// });
 
 // api
 //   .getUserInfo()
@@ -106,8 +128,8 @@ function createCard(data) {
   return cardElement.getView();
 }
 
-function renderCard(item) {
-  const cardElement = createCard(item);
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
   cardsSection.addItem(cardElement);
 }
 
