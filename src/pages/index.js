@@ -151,8 +151,18 @@ function handleAddCardSubmit(inputValues) {
   const link = inputValues.image;
   const data = { name, link };
 
-  cardsSection.addItem(createCard(data));
-  cardModal.close();
+  api
+    .createCard(data)
+    .then((newCard) => {
+      cardsSection.addItem(createCard(newCard));
+      cardModal.close();
+    })
+    .catch((err) => {
+      console.error("Error creating card:", err);
+    });
+
+  // cardsSection.addItem(createCard(data));
+  // cardModal.close();
 }
 
 // VALIDATION
