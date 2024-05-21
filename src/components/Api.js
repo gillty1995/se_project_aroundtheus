@@ -11,20 +11,6 @@ export default class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  // getInitialCards(handleDeleteCard) {
-  //   return fetch(`${this._baseUrl}/cards`, {
-  //     headers: this._headers,
-  //   })
-  //     .then(this._checkResponse)
-  //     .then((cards) => {
-  //       cards.forEach((card) => {
-  //         const cardId = card._id;
-  //         handleDeleteCard(cardId);
-  //       });
-  //       return cards;
-  //     });
-  // }
-
   getUserInfoAndCards() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }

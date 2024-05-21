@@ -45,17 +45,6 @@ api
     console.log(err);
   });
 
-// cardsSection.renderItems();
-
-// api
-//   .getInitialCards(handleDeleteCard)
-//   .then((initialCards) => {
-//     cardsSection.renderItems(initialCards);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
 // MODALS
 
 const profileModal = new ModalWithForm(
@@ -90,29 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching user info and cards:", err);
     });
 });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   api
-//     .getUserInfo()
-//     .then((userData) => {
-//       nameInput.value = userData.name || "";
-//       aboutInput.value = userData.about || "";
-//       userInfo.setUserInfo(userData);
-//     })
-//     .catch((err) => {
-//       console.error("Error fetching user info:", err);
-//     });
-// });
-
-// api
-//   .getUserInfo()
-//   .then((userInfo) => {
-//     nameInput.value = userInfo.name || "";
-//     aboutInput.value = userInfo.about || "";
-//   })
-//   .catch((err) => {
-//     console.error("Error fetching user info:", err);
-//   });
 
 // FUNCTIONS
 
@@ -167,25 +133,6 @@ function handleProfileEditSubmit(inputValues) {
     });
 }
 
-// userInfo.setUserInfo(updatedUserInfo);
-
-// userInfo.setUserInfo({
-//   name: inputValues.name,
-//   about: inputValues.about,
-// });
-
-//   api
-//     .updateUserInfo(updatedUserInfo)
-//     .then((updatedData) => {
-//       console.log("User information updated successfully:", updatedData);
-//     })
-//     .catch((err) => {
-//       console.error("Error updating user information:", err);
-//     });
-
-//   profileModal.close();
-// }
-
 function handleAddCardSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.image;
@@ -200,9 +147,6 @@ function handleAddCardSubmit(inputValues) {
     .catch((err) => {
       console.error("Error creating card:", err);
     });
-
-  // cardsSection.addItem(createCard(data));
-  // cardModal.close();
 }
 
 function handleDeleteCard(cardId) {

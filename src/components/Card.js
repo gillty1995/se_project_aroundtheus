@@ -40,8 +40,6 @@ export default class Card {
 
   _handleDeleteButton() {
     this._handleDeleteClick(this._id);
-    // this._cardElement.remove();
-    // this._cardElement = null;
   }
 
   getView() {
