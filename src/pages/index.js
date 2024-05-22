@@ -5,6 +5,7 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import ModalWithForm from "../components/ModalWithForm.js";
+import ModalEditAvatar from "../components/ModalEditAvatar.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import {
@@ -14,6 +15,7 @@ import {
   addcreateCardButton,
   nameInput,
   aboutInput,
+  avatarImage,
 } from "../utils/constants.js";
 
 // API
@@ -49,6 +51,12 @@ cardModal.setEventListeners();
 
 const previewImageModal = new ModalWithImage("#preview-image-modal");
 previewImageModal.setEventListeners();
+
+const avatarEditModal = new ModalEditAvatar(
+  "#avatar-edit-modal",
+  handleAvatarImageSubmit
+);
+avatarEditModal.setEventListeners();
 
 // USER INFO
 
@@ -120,6 +128,10 @@ addcreateCardButton.addEventListener("click", () => {
   formValidators["add-button-form"].resetValidation();
 });
 
+avatarImage.addEventListener("click", () => {
+  avatarEditModal.open();
+});
+
 // EVENT HANDLERS
 
 function handleProfileEditSubmit(inputValues) {
@@ -167,6 +179,28 @@ function handleDeleteCard(cardId) {
     .catch((err) => {
       console.error("Error deleting card:", err);
     });
+}
+
+function handleAvatarImageSubmit(inputValues) {
+  const avatarUrl = inputValues.avatar;
+  if (avatarUrl) {
+    api
+      .updateUserAvatar(avatarUrl)
+      .then((updatedData) => {
+        console.log("User avatar updated successfully:", updatedData);
+        updateAvatarUI(avatarUrl);
+        avatarEditModal.close();
+      })
+      .catch((err) => {
+        console.error("Error updating user avatar:", err);
+      });
+  } else {
+    console.error("Avatar URL is required.");
+  }
+}
+
+function updateAvatarUI(avatarUrl) {
+  avatarImage.src = avatarUrl;
 }
 
 // VALIDATION
