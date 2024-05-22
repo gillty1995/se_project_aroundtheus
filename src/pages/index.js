@@ -36,15 +36,6 @@ const cardsSection = new Section(
   ".cards__list"
 );
 
-api
-  .getInitialCards()
-  .then((initialCards) => {
-    cardsSection.renderItems(initialCards);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 // MODALS
 
 const profileModal = new ModalWithForm(
@@ -73,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nameInput.value = userData.name || "";
       aboutInput.value = userData.about || "";
       userInfo.setUserInfo(userData);
-      initialCards.forEach((cardData) => renderCard(cardData));
+      cardsSection.renderItems(initialCards);
     })
     .catch((err) => {
       console.error("Error fetching user info and cards:", err);
