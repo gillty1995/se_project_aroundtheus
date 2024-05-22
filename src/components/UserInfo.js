@@ -17,4 +17,7 @@ export default class UserInfo {
     this._nameElement.textContent = name;
     this._aboutElement.textContent = about;
   }
+  getUserId() {
+    return this._userId;
+  }
 }

@@ -32,6 +32,11 @@
   max-width: 219px;
 }
 
+.card__like-container {
+  display: flex;
+  align-items: center;
+}
+
 .card__like-button {
   background: transparent url(../images/like-button-inactive.svg) center
     no-repeat;
@@ -39,6 +44,16 @@
   width: 21px;
   height: 18px;
   transition: opacity 0.2s ease-in-out;
+}
+
+.card__like-count {
+  font-size: 14px;
+  color: #333;
+  margin-left: 8px;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 
 .card__like-button:hover {

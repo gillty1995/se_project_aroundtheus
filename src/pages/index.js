@@ -61,6 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
   api
     .getUserInfoAndCards()
     .then(([userData, initialCards]) => {
+      initialCards = initialCards.map((card) => ({
+        ...card,
+        likes: card.likes || [],
+      }));
       nameInput.value = userData.name || "";
       aboutInput.value = userData.about || "";
       userInfo.setUserInfo(userData);
@@ -80,7 +84,10 @@ function createCard(data) {
     () => {
       previewImageModal.open(data);
     },
-    handleDeleteCard
+    handleDeleteCard,
+    handleLikeCard,
+    handleUnlikeCard,
+    userInfo.getUserId()
   );
   return cardElement.getView();
 }
@@ -88,6 +95,14 @@ function createCard(data) {
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardsSection.addItem(cardElement);
+}
+
+function handleLikeCard(cardId) {
+  return api.likeCard(cardId);
+}
+
+function handleUnlikeCard(cardId) {
+  return api.unlikeCard(cardId);
 }
 
 // EVENT LISTENERS
@@ -127,7 +142,7 @@ function handleProfileEditSubmit(inputValues) {
 function handleAddCardSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.image;
-  const data = { name, link };
+  const data = { name, link, likes: [] };
 
   api
     .createCard(data)
