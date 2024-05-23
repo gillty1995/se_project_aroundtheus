@@ -17,6 +17,9 @@ import {
   nameInput,
   aboutInput,
   avatarImage,
+  avatarSaveButton,
+  profileSaveButton,
+  addCardSaveButton,
 } from "../utils/constants.js";
 
 // API
@@ -167,6 +170,8 @@ function handleDeleteButtonClick(cardId) {
 }
 
 function handleProfileEditSubmit(inputValues) {
+  profileSaveButton.textContent = "Saving...";
+
   const updatedUserInfo = {
     name: inputValues.name,
     about: inputValues.about,
@@ -180,10 +185,14 @@ function handleProfileEditSubmit(inputValues) {
     })
     .catch((err) => {
       console.error("Error updating user information:", err);
+    })
+    .finally(() => {
+      profileSaveButton.textContent = "Save";
     });
 }
 
 function handleAddCardSubmit(inputValues) {
+  addCardSaveButton.textContent = "Saving...";
   const name = inputValues.title;
   const link = inputValues.image;
   const data = { name, link, likes: [] };
@@ -196,6 +205,9 @@ function handleAddCardSubmit(inputValues) {
     })
     .catch((err) => {
       console.error("Error creating card:", err);
+    })
+    .finally(() => {
+      addCardSaveButton.textContent = "Create";
     });
 }
 
@@ -214,6 +226,10 @@ function handleDeleteCard(cardId) {
 }
 
 function handleAvatarImageSubmit(inputValues) {
+  if (avatarSaveButton) {
+    avatarSaveButton.textContent = "Saving...";
+  }
+
   const avatarUrl = inputValues.avatar;
   if (avatarUrl) {
     api
@@ -225,6 +241,11 @@ function handleAvatarImageSubmit(inputValues) {
       })
       .catch((err) => {
         console.error("Error updating user avatar:", err);
+      })
+      .finally(() => {
+        if (avatarUpdateButton) {
+          avatarSaveButton.textContent = "Save";
+        }
       });
   } else {
     console.error("Avatar URL is required.");

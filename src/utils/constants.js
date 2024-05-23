@@ -24,3 +24,15 @@ export const nameInput = document.querySelector("[name='name']");
 export const aboutInput = document.querySelector("[name='about']");
 
 export const avatarImage = document.querySelector(".profile__avatar");
+
+export const avatarSaveButton = document.querySelector(
+  "#avatar-edit-modal .modal__button"
+);
+
+export const profileSaveButton = document.querySelector(
+  "#profile-edit-modal .modal__button"
+);
+
+export const addCardSaveButton = document.querySelector(
+  "#add-button-modal .modal__button"
+);
