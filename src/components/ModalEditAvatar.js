@@ -4,9 +4,9 @@ export default class ModalEditAvatar extends Modal {
   constructor(modalSelector, handleAvatarImageSubmit) {
     super({ modalSelector });
     this._modalForm = this._modalElement.querySelector(".modal__form");
-    this._inputElement = this._modalForm.querySelector("#avatar-link-input");
+    this._inputElement = this._modalForm.querySelector("#avatar-image-input");
     this._errorElement = this._modalForm.querySelector(
-      "#avatar-link-input-error"
+      "#avatar-image-input-error"
     );
     this._handleAvatarImageSubmit = handleAvatarImageSubmit;
   }

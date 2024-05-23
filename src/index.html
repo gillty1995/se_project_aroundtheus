@@ -142,12 +142,12 @@
           <input
             class="modal__input"
             name="Avatar"
-            id="avatar-link-input"
+            id="avatar-image-input"
             placeholder="Avatar"
             type="url"
             required
           />
-          <span class="modal__error" id="avatar-link-input-error"></span>
+          <span class="modal__error" id="avatar-image-input-error"></span>
           <button
             class="modal__button modal__button_disabled"
             type="submit"
@@ -155,6 +155,19 @@
           >
             Save
           </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container modal__container-delete-card-modal">
+        <button class="modal__close" id="delete-card-modal-close"></button>
+        <h4 class="modal__header">Are you sure?</h4>
+        <form
+          class="modal__form modal__form-delete-card-modal"
+          id="delete-card-form"
+        >
+          <button class="modal__button" type="submit">Yes</button>
         </form>
       </div>
     </div>
@@ -177,7 +190,6 @@
               class="card__like-button card__like-button_active"
               id="card__like-button-js"
             ></button>
-            <span class="card__like-count">0</span>
           </div>
         </div>
       </li>

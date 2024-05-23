@@ -23,6 +23,10 @@
   max-height: 330px;
 }
 
+.modal__container-delete-card-modal {
+  max-height: 181px;
+}
+
 .modal__header {
   color: #000;
   font-family: "Inter", Arial, Helvetica;
@@ -44,6 +48,10 @@
   grid-template-columns: minmax(auto, 358px);
   row-gap: 29px;
   padding: 54px 36px 36px;
+}
+
+.modal__form-delete-card-modal {
+  padding: 38px 36px 36px;
 }
 
 .modal__form > :nth-child(3) {

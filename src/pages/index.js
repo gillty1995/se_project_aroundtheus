@@ -6,6 +6,7 @@ import Card from "../components/Card.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import ModalEditAvatar from "../components/ModalEditAvatar.js";
+import ModalDeleteCard from "../components/ModalDeleteCard.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import {
@@ -58,6 +59,12 @@ const avatarEditModal = new ModalEditAvatar(
 );
 avatarEditModal.setEventListeners();
 
+const deleteCardModal = new ModalDeleteCard(
+  "#delete-card-modal",
+  handleDeleteCard
+);
+deleteCardModal.setEventListeners();
+
 // USER INFO
 
 const userInfo = new UserInfo({
@@ -92,25 +99,18 @@ function createCard(data) {
     () => {
       previewImageModal.open(data);
     },
-    handleDeleteCard,
     handleLikeCard,
     handleUnlikeCard,
+    handleDeleteButtonClick,
     userInfo.getUserId()
   );
+
   return cardElement.getView();
 }
 
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardsSection.addItem(cardElement);
-}
-
-function handleLikeCard(cardId) {
-  return api.likeCard(cardId);
-}
-
-function handleUnlikeCard(cardId) {
-  return api.unlikeCard(cardId);
 }
 
 // EVENT LISTENERS
@@ -133,6 +133,38 @@ avatarImage.addEventListener("click", () => {
 });
 
 // EVENT HANDLERS
+
+function handleLikeCard(cardId) {
+  return api
+    .likeCard(cardId)
+    .then(() => {
+      const card = cardsSection.getItem(cardId);
+      if (card) {
+        card._updateLikeStatus(true);
+      }
+    })
+    .catch((err) => {
+      console.error(`Error liking card: ${err}`);
+    });
+}
+
+function handleUnlikeCard(cardId) {
+  return api
+    .unlikeCard(cardId)
+    .then(() => {
+      const card = cardsSection.getItem(cardId);
+      if (card) {
+        card._updateLikeStatus(false);
+      }
+    })
+    .catch((err) => {
+      console.error(`Error unliking card: ${err}`);
+    });
+}
+
+function handleDeleteButtonClick(cardId) {
+  deleteCardModal.open(cardId);
+}
 
 function handleProfileEditSubmit(inputValues) {
   const updatedUserInfo = {
@@ -188,7 +220,7 @@ function handleAvatarImageSubmit(inputValues) {
       .updateUserAvatar(avatarUrl)
       .then((updatedData) => {
         console.log("User avatar updated successfully:", updatedData);
-        updateAvatarUI(avatarUrl);
+        updateAvatarUI(updatedData.avatar);
         avatarEditModal.close();
       })
       .catch((err) => {
@@ -201,6 +233,11 @@ function handleAvatarImageSubmit(inputValues) {
 
 function updateAvatarUI(avatarUrl) {
   avatarImage.src = avatarUrl;
+
+  const avatarUpdateEvent = new CustomEvent("avatarUpdate", {
+    detail: avatarUrl,
+  });
+  document.dispatchEvent(avatarUpdateEvent);
 }
 
 // VALIDATION

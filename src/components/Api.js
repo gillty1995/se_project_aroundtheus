@@ -73,20 +73,3 @@ export default class Api {
     }).then(this._checkResponse);
   }
 }
-
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "a44aa497-1b5c-4737-a030-aa953cdc7c47",
-//     "Content-Type": "application/json",
-//   },
-// });
-
-// api
-//   .getInitialCards()
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });

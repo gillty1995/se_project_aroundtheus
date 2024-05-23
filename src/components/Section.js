@@ -14,4 +14,8 @@ export default class Section {
   addItem(item) {
     this._container.prepend(item);
   }
+
+  getItem(itemId) {
+    return this._renderItems.find((item) => item.id === itemId);
+  }
 }

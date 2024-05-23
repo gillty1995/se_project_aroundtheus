@@ -1,7 +1,17 @@
 export default class UserInfo {
-  constructor({ nameElementSelector, aboutElementSelector }) {
+  constructor({
+    nameElementSelector,
+    aboutElementSelector,
+    avatarImageSelector,
+  }) {
     this._nameElement = document.querySelector(nameElementSelector);
     this._aboutElement = document.querySelector(aboutElementSelector);
+    this._avatarImage = document.querySelector(avatarImageSelector);
+
+    document.addEventListener("avatarUpdate", (event) => {
+      const avatarUrl = event.detail;
+      this._avatarImage.src = avatarUrl;
+    });
   }
 
   getUserInfo() {
