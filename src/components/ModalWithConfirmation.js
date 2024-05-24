@@ -1,6 +1,6 @@
 import Modal from "./Modal.js";
 
-export default class ModalDeleteCard extends Modal {
+export default class ModalWithConfirmation extends Modal {
   constructor(modalSelector, handleDeleteCardSubmit) {
     super({ modalSelector });
     this._handleDeleteCardSubmit = handleDeleteCardSubmit;

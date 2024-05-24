@@ -18,6 +18,7 @@ export default class Card {
     this._handleLikeCard = handleLikeCard;
     this._handleUnlikeCard = handleUnlikeCard;
     this._currentUserId = currentUserId;
+    this._isLiked = data.isLiked;
     this._cardElement = this._getTemplate();
   }
 

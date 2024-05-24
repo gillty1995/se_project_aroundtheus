@@ -6,7 +6,7 @@ import Card from "../components/Card.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import ModalWithForm from "../components/ModalWithForm.js";
 import ModalEditAvatar from "../components/ModalEditAvatar.js";
-import ModalDeleteCard from "../components/ModalDeleteCard.js";
+import ModalWithConfirmation from "../components/ModalWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import {
@@ -62,7 +62,7 @@ const avatarEditModal = new ModalEditAvatar(
 );
 avatarEditModal.setEventListeners();
 
-const deleteCardModal = new ModalDeleteCard(
+const deleteCardModal = new ModalWithConfirmation(
   "#delete-card-modal",
   handleDeleteCard
 );
@@ -80,12 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   api
     .getUserInfoAndCards()
     .then(([userData, initialCards]) => {
-      initialCards = initialCards.map((card) => ({
-        ...card,
-        likes: card.likes || [],
-      }));
-      nameInput.value = userData.name || "";
-      aboutInput.value = userData.about || "";
       userInfo.setUserInfo(userData);
       cardsSection.renderItems(initialCards);
     })
