@@ -73,6 +73,7 @@ deleteCardModal.setEventListeners();
 const userInfo = new UserInfo({
   nameElementSelector: ".profile__title",
   aboutElementSelector: ".profile__description",
+  avatarImageSelector: ".profile__avatar",
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -195,7 +196,7 @@ function handleAddCardSubmit(inputValues) {
   addCardSaveButton.textContent = "Saving...";
   const name = inputValues.title;
   const link = inputValues.image;
-  const data = { name, link, likes: [] };
+  const data = { name, link };
 
   api
     .createCard(data)
@@ -236,29 +237,18 @@ function handleAvatarImageSubmit(inputValues) {
       .updateUserAvatar(avatarUrl)
       .then((updatedData) => {
         console.log("User avatar updated successfully:", updatedData);
-        updateAvatarUI(updatedData.avatar);
+        userInfo.setUserInfo({ avatar: avatarUrl });
         avatarEditModal.close();
       })
       .catch((err) => {
         console.error("Error updating user avatar:", err);
       })
       .finally(() => {
-        if (avatarUpdateButton) {
-          avatarSaveButton.textContent = "Save";
-        }
+        avatarSaveButton.textContent = "Save";
       });
   } else {
     console.error("Avatar URL is required.");
   }
-}
-
-function updateAvatarUI(avatarUrl) {
-  avatarImage.src = avatarUrl;
-
-  const avatarUpdateEvent = new CustomEvent("avatarUpdate", {
-    detail: avatarUrl,
-  });
-  document.dispatchEvent(avatarUpdateEvent);
 }
 
 // VALIDATION

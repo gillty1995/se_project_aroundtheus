@@ -8,25 +8,30 @@ export default class UserInfo {
     this._aboutElement = document.querySelector(aboutElementSelector);
     this._avatarImage = document.querySelector(avatarImageSelector);
 
-    document.addEventListener("avatarUpdate", (event) => {
-      const avatarUrl = event.detail;
-      this._avatarImage.src = avatarUrl;
-    });
+    if (!this._avatarImage) {
+      console.error("Avatar image element not found.");
+    }
   }
 
   getUserInfo() {
-    this._userInfo = {
-      name: this._nameElement.textContent,
-      about: this._aboutElement.textContent,
+    return {
+      name: this._nameElement?.textContent || "",
+      about: this._aboutElement?.textContent || "",
     };
-
-    return this._userInfo;
   }
 
-  setUserInfo({ name, about }) {
-    this._nameElement.textContent = name;
-    this._aboutElement.textContent = about;
+  setUserInfo({ name, about, avatar }) {
+    if (name) {
+      this._nameElement.textContent = name;
+    }
+    if (about) {
+      this._aboutElement.textContent = about;
+    }
+    if (avatar && this._avatarImage) {
+      this._avatarImage.src = avatar;
+    }
   }
+
   getUserId() {
     return this._userId;
   }

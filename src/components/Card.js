@@ -11,9 +11,6 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
-    this._isLiked =
-      Array.isArray(data.likes) &&
-      data.likes.some((like) => like._id === currentUserId);
     this._cardSelector = cardSelector;
     this._data = data;
     this._handleImageClick = handleImageClick;
@@ -91,12 +88,8 @@ export default class Card {
     this._cardImageEl.alt = this._name;
     this._updateLikeStatus();
     this._setEventListeners();
+    this._updateLikeStatus();
 
     return this._element;
-  }
-
-  updateLikeStatus(isLiked) {
-    this._isLiked = isLiked;
-    this._updateLikeStatus();
   }
 }
