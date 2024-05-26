@@ -5,7 +5,6 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import ModalWithImage from "../components/ModalWithImage.js";
 import ModalWithForm from "../components/ModalWithForm.js";
-import ModalEditAvatar from "../components/ModalEditAvatar.js";
 import ModalWithConfirmation from "../components/ModalWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
@@ -56,11 +55,10 @@ cardModal.setEventListeners();
 const previewImageModal = new ModalWithImage("#preview-image-modal");
 previewImageModal.setEventListeners();
 
-const avatarEditModal = new ModalEditAvatar(
+const avatarEditModal = new ModalWithForm(
   "#avatar-edit-modal",
   handleAvatarImageSubmit
 );
-avatarEditModal.setEventListeners();
 
 const deleteCardModal = new ModalWithConfirmation(
   "#delete-card-modal",
@@ -80,6 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
   api
     .getUserInfoAndCards()
     .then(([userData, initialCards]) => {
+      console.log("User Data:", userData);
+      const avatarUrl = userData.avatar;
+      console.log("Avatar URL:", avatarUrl);
+      handleAvatarImageSubmit({ avatar: avatarUrl });
       userInfo.setUserInfo(userData);
       cardsSection.renderItems(initialCards);
     })
@@ -227,6 +229,11 @@ function handleAvatarImageSubmit(inputValues) {
 
   const avatarUrl = inputValues.avatar;
   if (avatarUrl) {
+    const avatarImageElement = document.querySelector(".profile__avatar");
+    if (avatarImageElement) {
+      avatarImageElement.src = avatarUrl;
+    }
+
     api
       .updateUserAvatar(avatarUrl)
       .then((updatedData) => {

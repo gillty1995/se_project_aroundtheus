@@ -17,6 +17,15 @@ export default class ModalWithForm extends Modal {
     return inputValues;
   }
 
+  setAvatarUrl(avatarUrl) {
+    console.log(this._modalForm);
+    const avatarInput = this._modalForm.querySelector("input[name='avatar']");
+    console.log(avatarInput);
+    if (avatarInput) {
+      avatarInput.value = avatarUrl;
+    }
+  }
+
   setEventListeners() {
     super._setEventListeners();
     this._modalForm.addEventListener("submit", (e) => {
