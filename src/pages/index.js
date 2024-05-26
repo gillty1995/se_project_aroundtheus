@@ -59,6 +59,7 @@ const avatarEditModal = new ModalWithForm(
   "#avatar-edit-modal",
   handleAvatarImageSubmit
 );
+avatarEditModal.setEventListeners();
 
 const deleteCardModal = new ModalWithConfirmation(
   "#delete-card-modal",
@@ -78,9 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   api
     .getUserInfoAndCards()
     .then(([userData, initialCards]) => {
-      console.log("User Data:", userData);
       const avatarUrl = userData.avatar;
-      console.log("Avatar URL:", avatarUrl);
       handleAvatarImageSubmit({ avatar: avatarUrl });
       userInfo.setUserInfo(userData);
       cardsSection.renderItems(initialCards);
@@ -116,10 +115,10 @@ function renderCard(cardData) {
 // EVENT LISTENERS
 
 profileEditButton.addEventListener("click", () => {
+  formValidators["profile-edit-form"].resetValidation();
   const currentUser = userInfo.getUserInfo();
   nameInput.value = currentUser.name.trim();
   aboutInput.value = currentUser.about.trim();
-
   profileModal.open();
 });
 
@@ -140,7 +139,7 @@ function handleLikeCard(cardId) {
     .then(() => {
       const card = cardsSection.getItem(cardId);
       if (card) {
-        card._updateLikeStatus(true);
+        card.updateLikeStatus(true);
       }
     })
     .catch((err) => {
@@ -154,7 +153,7 @@ function handleUnlikeCard(cardId) {
     .then(() => {
       const card = cardsSection.getItem(cardId);
       if (card) {
-        card._updateLikeStatus(false);
+        card.updateLikeStatus(false);
       }
     })
     .catch((err) => {

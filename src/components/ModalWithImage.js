@@ -17,8 +17,5 @@ export default class ModalWithImage extends Modal {
 
   setEventListeners() {
     super._setEventListeners();
-    this._modalImage.addEventListener("submit", (e) => {
-      e.preventDefault();
-    });
   }
 }

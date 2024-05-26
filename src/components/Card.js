@@ -52,7 +52,7 @@ export default class Card {
       this._handleUnlikeCard(this._id)
         .then(() => {
           this._isLiked = false;
-          this._updateLikeStatus();
+          this.updateLikeStatus();
         })
         .catch((err) => {
           console.error(`Error unliking card: ${err}`);
@@ -61,7 +61,7 @@ export default class Card {
       this._handleLikeCard(this._id)
         .then(() => {
           this._isLiked = true;
-          this._updateLikeStatus();
+          this.updateLikeStatus();
         })
         .catch((err) => {
           console.error(`Error liking card: ${err}`);
@@ -69,7 +69,7 @@ export default class Card {
     }
   }
 
-  _updateLikeStatus() {
+  updateLikeStatus() {
     if (this._likeButton) {
       if (this._isLiked) {
         this._likeButton.classList.add("card__like-button-active");
@@ -87,9 +87,8 @@ export default class Card {
     this._element.querySelector(".card__title").textContent = this._name;
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
-    this._updateLikeStatus();
+    this.updateLikeStatus();
     this._setEventListeners();
-    this._updateLikeStatus();
 
     return this._element;
   }
