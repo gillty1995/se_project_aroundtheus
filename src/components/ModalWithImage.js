@@ -14,8 +14,4 @@ export default class ModalWithImage extends Modal {
     this._modalImageCaption.textContent = data.name;
     super.open();
   }
-
-  setEventListeners() {
-    super._setEventListeners();
-  }
 }

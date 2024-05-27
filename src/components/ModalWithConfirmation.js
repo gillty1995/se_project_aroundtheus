@@ -12,7 +12,6 @@ export default class ModalWithConfirmation extends Modal {
     this._confirmButton.addEventListener("click", () => {
       const cardId = this._modalElement.dataset.cardId;
       this._handleDeleteCardSubmit(cardId);
-      this.close();
     });
   }
 
