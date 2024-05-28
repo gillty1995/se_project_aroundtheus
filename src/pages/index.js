@@ -127,6 +127,7 @@ addcreateCardButton.addEventListener("click", () => {
 
 avatarImage.addEventListener("click", () => {
   avatarEditModal.open();
+  formValidators["avatar-edit-form"].resetValidation();
 });
 
 // EVENT HANDLERS
