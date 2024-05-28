@@ -11,7 +11,7 @@
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes. I was only given information for desktop screens at 1280px, and mobile screens at 320px, but I made adjustments so it would be responsive to most screen displays. Used javascript to add functionality to it, with smooth modal open/close transitions by using classList "open**modal and open**preview-modal".
+This project is made so all the elements are displayed correctly on popular screen sizes. Javascript API used to upload and save data to server.
 
 **Figma**
 
@@ -27,8 +27,8 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Video**
 
-- (Link to video from Sprint 3 explaining technologies and techniques that went into creating the website up to that point): https://drive.google.com/file/d/17RZdoGNSyqfVzRaT20ApKzgj_rPySPjZ/view?usp=sharing
+- (Video demonstration of project): https://www.youtube.com/watch?v=OjkrDXdKaCk
 
 **Final Thoughts**
-
-Refactored according to OOP principles.    
+ 
+All code is written using BEM and OOP principles to maintain clean and dry code that can be used universally. 
