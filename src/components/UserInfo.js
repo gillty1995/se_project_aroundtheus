@@ -1,20 +1,38 @@
 export default class UserInfo {
-  constructor({ nameElementSelector, jobElementSelector }) {
+  constructor({
+    nameElementSelector,
+    aboutElementSelector,
+    avatarImageSelector,
+  }) {
     this._nameElement = document.querySelector(nameElementSelector);
-    this._jobElement = document.querySelector(jobElementSelector);
+    this._aboutElement = document.querySelector(aboutElementSelector);
+    this._avatarImage = document.querySelector(avatarImageSelector);
+
+    if (!this._avatarImage) {
+      console.error("Avatar image element not found.");
+    }
   }
 
   getUserInfo() {
-    this._userInfo = {
-      name: this._nameElement.textContent,
-      job: this._jobElement.textContent,
+    return {
+      name: this._nameElement?.textContent || "",
+      about: this._aboutElement?.textContent || "",
     };
-
-    return this._userInfo;
   }
 
-  setUserInfo({ name, job }) {
-    this._nameElement.textContent = name;
-    this._jobElement.textContent = job;
+  setUserInfo({ name, about, avatar }) {
+    if (name) {
+      this._nameElement.textContent = name;
+    }
+    if (about) {
+      this._aboutElement.textContent = about;
+    }
+    if (avatar && this._avatarImage) {
+      this._avatarImage.src = avatar;
+    }
+  }
+
+  getUserId() {
+    return this._userId;
   }
 }

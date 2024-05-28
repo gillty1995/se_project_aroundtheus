@@ -13,8 +13,15 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img src="<%=require("./images/jacques-cousteau.jpg")%>" alt="Avatar"
-          class="profile__image" />
+          <div class="profile__avatar-container">
+            <img src="<%""%>" alt="Avatar" class="profile__avatar" />
+            <button
+              aria-label="edit"
+              type="button"
+              class="profile__avatar-button"
+              id="profile__avatar-button-js"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title" id="profile__name-js">Name</h1>
             <button
@@ -64,15 +71,15 @@
           ></span>
           <input
             class="modal__input"
-            name="job"
-            id="profile-job-input"
+            name="about"
+            id="profile-about-input"
             placeholder="Enter description..."
             type="text"
             minlength="2"
             maxlength="200"
             required
           />
-          <span class="modal__error" id="profile-job-input-error"></span>
+          <span class="modal__error" id="profile-about-input-error"></span>
           <button class="modal__button">Save</button>
         </form>
       </div>
@@ -126,6 +133,44 @@
       </div>
     </div>
 
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="avatar-edit-modal-close"></button>
+        <h4 class="modal__header">Change profile picture</h4>
+        <form class="modal__form" id="avatar-edit-form" novalidate>
+          <input
+            class="modal__input"
+            name="avatar"
+            id="avatar-image-input"
+            placeholder="Avatar"
+            type="url"
+            required
+          />
+          <span class="modal__error" id="avatar-image-input-error"></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container modal__container-delete-card-modal">
+        <button class="modal__close" id="delete-card-modal-close"></button>
+        <h4 class="modal__header">Are you sure?</h4>
+        <form
+          class="modal__form modal__form-delete-card-modal"
+          id="delete-card-form"
+        >
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <button
@@ -137,12 +182,14 @@
         <img src="" alt="" class="card__image" id="card__image-js" />
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button
-            aria-label="like"
-            type="button"
-            class="card__like-button card__like-button_active"
-            id="card__like-button-js"
-          ></button>
+          <div class="card__like-container">
+            <button
+              aria-label="like"
+              type="button"
+              class="card__like-button card__like-button_active"
+              id="card__like-button-js"
+            ></button>
+          </div>
         </div>
       </li>
     </template>
